@@ -1,3 +1,5 @@
+import {Author} from "./Author";
+
 export type Project = {
     id: string;
     name: string,
@@ -7,10 +9,4 @@ export type Project = {
     releaseDate: string,
     author: Author
     htmlContent: string,
-}
-
-type Author = {
-    name: string,
-    description: string,
-    image: string,
 }
