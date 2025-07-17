@@ -1,4 +1,4 @@
-import {Author} from "./Author";
+import {Author} from "./author";
 
 export type Project = {
     id: string;

@@ -1,6 +1,6 @@
-import {Author} from "./Author";
+import {Author} from "./author";
 
-export type Posts = {
+export type Post = {
     id: string;
     name: string,
     description: string,
