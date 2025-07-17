@@ -1,0 +1,1 @@
+//postsController to manage data and CRUD methods
