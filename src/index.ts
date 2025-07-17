@@ -14,7 +14,7 @@ app.use(express.json());
 
 
 //starting server on port 3001
-app.listen(3001, () => {
+app.listen(process.env.PORT, () => {
     connectDB();
-    console.log("Server running on port 3000");
+    console.log("Server running on port " + process.env.PORT);
 });
