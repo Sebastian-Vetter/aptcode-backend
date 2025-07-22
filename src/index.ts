@@ -20,6 +20,9 @@ dotenv.config();
 
 //middlewares
 app.use(express.json());
+app.use('/v1/open/posts', (req, res) => {
+    res.json("posts")
+})
 
 //starting rest & socket server
 app.listen(process.env.PORT, () => {

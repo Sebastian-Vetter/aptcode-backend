@@ -1,10 +1,8 @@
+import {Link} from "./link";
+
 export type Header = {
-    navLinks: NavLink[],
+    links: Link[],
     logoName: string,
     logoImage: string,
 }
 
-type NavLink = {
-    displayName: string;
-    url: string;
-}
