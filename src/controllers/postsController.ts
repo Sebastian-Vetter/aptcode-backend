@@ -42,9 +42,11 @@ export async function createPost(req: Request, res: Response) {
     try {
         if (await existPost(post)) {
             postModel.updateOne(post).then(result => {
-                return res.status(200).json({
-                    result: result
-                });
+                if (result.modifiedCount > 0) {
+                    return res.status(200).json({ message: "Post created successfully" });
+                } else {
+                    return res.status(304).json({ message: "No changes made to the post" });
+                }
             });
         } else {
             postModel.insertOne(post).then(result => {
@@ -117,9 +119,11 @@ export async function updatePost(req: Request, res: Response) {
     try {
         if (await existPost(post)) {
             postModel.updateOne({id: post.id}, post).then(result => {
-                return res.status(200).json({
-                    result: result
-                })
+                if (result.modifiedCount > 0) {
+                    return res.status(200).json({ message: "Post updated successfully" });
+                } else {
+                    return res.status(304).json({ message: "No changes made to the post" });
+                }
             })
         }
     } catch (error) {
