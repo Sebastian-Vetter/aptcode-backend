@@ -6,4 +6,5 @@ export interface PostRepositoryInterface {
     findAll(): Promise<PostType[]>;
     update(id: string, update: PostType): Promise<PostType>;
     delete(id: string): Promise<boolean>;
+    exists(id: string): Promise<boolean>;
 }
