@@ -88,6 +88,7 @@ src/
 ├── controllers/     (API-Logik)  
 ├── models/          (Mongoose-Modelle)  
 ├── routes/          (Routen-Definition)  
+├── repositories/    (Repositories)  
 ├── services/        (Fachlogik)  
 ├── middleware/      (z. B. Auth, Fehlerbehandlung)  
 ├── sockets/         (Socket.IO-Logik)  
