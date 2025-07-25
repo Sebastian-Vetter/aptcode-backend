@@ -3,7 +3,7 @@
 //imports
 import express from "express";
 import dotenv from "dotenv";
-import {connectDB} from "./database/mongodb";
+import {connectDB} from "./database/mongo.database";
 import {createServer} from "http";
 import {Server as SocketIOServer} from "socket.io";
 

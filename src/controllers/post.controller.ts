@@ -1,13 +1,13 @@
 //postsController to manage data and CRUD methods
 
-import {postModel} from "../models/postModel";
-import {Post} from "../types/post";
+import {postModel} from "../models/post.model";
+import {PostType} from "../types/post.type";
 import {Request, Response} from "express";
 
 const postsModel = postModel;
 
 //get post and return a boolean
-export async function existPost(post: Post) {
+export async function existPost(post: PostType) {
     try {
         const read = await readPost(post.id);
         if (!read) {
@@ -23,7 +23,7 @@ export async function existPost(post: Post) {
 //if a document doesn't exist -> insert a new document - status 200
 //else - status 500
 export async function createPost(req: Request, res: Response) {
-    let post: Post = {
+    let post: PostType = {
         id: req.body.id,
         name: req.body.name,
         description: req.body.description,
@@ -43,7 +43,7 @@ export async function createPost(req: Request, res: Response) {
         if (await existPost(post)) {
             postModel.updateOne(post).then(result => {
                 if (result.modifiedCount > 0) {
-                    return res.status(200).json({ message: "Post created successfully" });
+                    return res.status(200).json({ message: "PostType created successfully" });
                 } else {
                     return res.status(304).json({ message: "No changes made to the post" });
                 }
@@ -68,7 +68,7 @@ export async function createPost(req: Request, res: Response) {
 //get post and return a value
 //if a post was found -> return post
 //else -> return null
-export async function readPost(id: String): Promise<Post | null> {
+export async function readPost(id: String): Promise<PostType | null> {
     //getting document by id
     try {
         const document = await postModel.findOne({id: id});
@@ -100,7 +100,7 @@ export async function readPost(id: String): Promise<Post | null> {
 
 //updating a post
 export async function updatePost(req: Request, res: Response) {
-    let post: Post = {
+    let post: PostType = {
         id: req.body.id,
         name: req.body.name,
         description: req.body.description,
@@ -120,7 +120,7 @@ export async function updatePost(req: Request, res: Response) {
         if (await existPost(post)) {
             postModel.updateOne({id: post.id}, post).then(result => {
                 if (result.modifiedCount > 0) {
-                    return res.status(200).json({ message: "Post updated successfully" });
+                    return res.status(200).json({ message: "PostType updated successfully" });
                 } else {
                     return res.status(304).json({ message: "No changes made to the post" });
                 }
@@ -133,7 +133,7 @@ export async function updatePost(req: Request, res: Response) {
 
 //deleting a post
 export async function deletePost(req: Request, res: Response) {
-    let post: Post = {
+    let post: PostType = {
         id: req.body.id,
         name: req.body.name,
         description: req.body.description,
