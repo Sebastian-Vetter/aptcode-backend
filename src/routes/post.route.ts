@@ -1,6 +1,6 @@
 //postsRoute to manage requests and response
 import express from 'express';
-import {createPost, existPost, readPost, deletePost, updatePost} from "../controllers/postsController";
+import {createPost, existPost, readPost, deletePost, updatePost} from "../controllers/post.controller";
 import {Request, Response} from "express";
 
 const router = express.Router();

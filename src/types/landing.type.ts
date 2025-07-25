@@ -1,4 +1,4 @@
-export type Landing = {
+export type LandingType = {
     title: string,
     subtitle: string,
     heroImage: string,

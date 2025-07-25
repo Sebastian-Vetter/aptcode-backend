@@ -1,12 +1,13 @@
-import {Author} from "./author";
+import {AuthorType} from "./author.type";
 
-export type Project = {
+export type PostType = {
     id: string;
     name: string,
     description: string,
     image: string,
     published: boolean,
     releaseDate: string,
-    author: Author
+    author: AuthorType,
+    topics: string[],
     htmlContent: string,
 }
