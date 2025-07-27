@@ -4,8 +4,6 @@ import {postModel} from "../models/post.model";
 import {PostType} from "../types/post.type";
 import {Request, Response} from "express";
 
-const postsModel = postModel;
-
 //get post and return a boolean
 export async function existPost(post: PostType) {
     try {
@@ -23,21 +21,7 @@ export async function existPost(post: PostType) {
 //if a document doesn't exist -> insert a new document - status 200
 //else - status 500
 export async function createPost(req: Request, res: Response) {
-    let post: PostType = {
-        id: req.body.id,
-        name: req.body.name,
-        description: req.body.description,
-        image: req.body.image,
-        published: req.body.published,
-        releaseDate: req.body.releaseDate,
-        author: {
-            name: req.body.author.name,
-            description: req.body.author.description,
-            image: req.body.author.image,
-        },
-        topics: req.body.topics,
-        htmlContent: req.body.htmlContent,
-    };
+    let post: PostType = {...req.body};
 
     try {
         if (await existPost(post)) {
@@ -71,26 +55,7 @@ export async function createPost(req: Request, res: Response) {
 export async function readPost(id: String): Promise<PostType | null> {
     //getting document by id
     try {
-        const document = await postModel.findOne({id: id});
-
-        if (document) {
-            //mapping of post
-            return {
-                id: document.id,
-                name: document.name,
-                description: document.description,
-                image: document.image,
-                published: document.published,
-                releaseDate: document.releaseDate,
-                author: {
-                    name: document.name,
-                    description: document.description,
-                    image: document.image
-                },
-                topics: document.topic,
-                htmlContent: document.htmlContent
-            };
-        }
+        
     } catch (error) {
         return null;
     }
@@ -151,7 +116,7 @@ export async function deletePost(req: Request, res: Response) {
 
     try {
         if (await existPost(post)) {
-            postModel.deleteOne({id: post.id}).then(result => {
+            postModel.deleteOne({id: post.id}).then(() => {
                 return res.status(200).json({})
             })
         } else {
