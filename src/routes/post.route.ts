@@ -5,19 +5,18 @@ import {Request, Response} from "express";
 
 const router = express.Router();
 
-
-router.get('/', async (req: Request, res: Response) => {
-    return res.json(await readPost(req.body.id));
+router.get('/:id', async (req: Request, res: Response) => {
+    return res.json(await readPost(req.params.id));
 })
 
-router.delete('/', async (req: Request, res: Response) => {
+router.delete('/:id', async (req: Request, res: Response) => {
     return res.json(await deletePost(req, res));
 })
 
-router.post('/', async (req: Request, res: Response) => {
+router.post('/:id', async (req: Request, res: Response) => {
     return res.json(await createPost(req, res));
 })
 
-router.patch('/', async (req: Request, res: Response) => {
+router.patch('/:id', async (req: Request, res: Response) => {
     return res.json(await updatePost(req, res));
 })
