@@ -3,7 +3,7 @@
 import {postModel} from "../models/post.model";
 import {PostType} from "../types/post.type";
 import {Request, Response} from "express";
-
+//todo: split functions to controller, services, repositories, interfaces
 //get post and return a boolean
 export async function existPost(post: PostType) {
     try {
