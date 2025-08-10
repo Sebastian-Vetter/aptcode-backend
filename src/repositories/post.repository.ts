@@ -1,12 +1,13 @@
 import {PostRepositoryInterface} from "../interfaces/post.repository.interface";
 import {PostType} from "../types/post.type";
 
+//todo: implement functions
 export class PostRepository implements PostRepositoryInterface {
-    async findAll(): Promise<PostType[]> {
+    public async findAll(): Promise<PostType[]> {
         return Promise.resolve([]);
     }
 
-    async findById(id: string): Promise<PostType> {
+    public async findById(id: string): Promise<PostType> {
         return Promise.resolve({
             id: "req.body.id",
             name: "req.body.name",
@@ -24,7 +25,7 @@ export class PostRepository implements PostRepositoryInterface {
         });
     }
 
-    async createPost(post: PostType): Promise<PostType> {
+    public async createPost(post: PostType): Promise<PostType> {
         return Promise.resolve({
             id: "req.body.id",
             name: "req.body.name",
@@ -42,11 +43,11 @@ export class PostRepository implements PostRepositoryInterface {
         });
     }
 
-    async delete(id: string): Promise<boolean> {
+    public async delete(id: string): Promise<boolean> {
         return Promise.resolve(false);
     }
 
-    async update(id: string, update: PostType): Promise<PostType> {
+    public async update(id: string, update: PostType): Promise<PostType> {
         return Promise.resolve({
             id: "req.body.id",
             name: "req.body.name",
@@ -64,7 +65,7 @@ export class PostRepository implements PostRepositoryInterface {
         });
     }
 
-    async exists(id: string): Promise<boolean> {
+    public async exists(id: string): Promise<boolean> {
         return Promise.resolve(false);
     }
 }
