@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import {connectDB} from "./database/mongo.database";
 import {createServer} from "http";
 import {Server as SocketIOServer} from "socket.io";
+import {errorMiddleware} from "./middlewares/error.middleware";
 
 //init
 const app = express();
@@ -20,6 +21,7 @@ dotenv.config();
 
 //middlewares
 app.use(express.json());
+app.use(errorMiddleware);
 
 //starting rest & socket server
 app.listen(process.env.PORT, () => {
