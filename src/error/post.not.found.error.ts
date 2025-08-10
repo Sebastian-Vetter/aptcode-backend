@@ -1,4 +1,4 @@
-export class PostAlreadyExistsError extends Error {
+export class PostNotFoundError extends Error {
     constructor(message: string) {
         super();
     }
