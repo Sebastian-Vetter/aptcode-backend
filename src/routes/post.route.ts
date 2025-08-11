@@ -1,12 +1,12 @@
 //postsRoute to manage requests and response
 import express from 'express';
-import {createPost, existPost, readPost, deletePost, updatePost} from "../controllers/post.controller";
+import {createPost, readPost, deletePost, updatePost} from "../controllers/post.controller";
 import {Request, Response} from "express";
 
 const router = express.Router();
 //get post route
 router.get('/:id', async (req: Request, res: Response) => {
-    return res.json(await readPost(req.params.id));
+    return res.json(await readPost(req, res));
 })
 //delete post route
 router.delete('/:id', async (req: Request, res: Response) => {

@@ -15,7 +15,7 @@ export class PostService {
             return true;
         }
 
-        return new PostAlreadyExistsError("Post already exists");
+        return new PostAlreadyExistsError("Post already exists", 409);
     }
 
     public async deletePost(req: Request, res: Response): Promise<Error | Boolean> {
