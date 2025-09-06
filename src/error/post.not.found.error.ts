@@ -1,10 +1,8 @@
 export class PostNotFoundError extends Error {
     status: number;
-    message: string;
 
-    constructor(message: string, status: number) {
-        super()
-        this.message = message;
+    constructor(status: number) {
+        super("Post couldn't be found")
         this.status = status;
     }
 }
