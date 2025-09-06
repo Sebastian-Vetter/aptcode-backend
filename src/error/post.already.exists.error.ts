@@ -1,10 +1,8 @@
 export class PostAlreadyExistsError extends Error {
     status: number;
-    message: string;
 
-    constructor(message: string, status: number) {
-        super();
-        this.message = message;
+    constructor(status: number) {
+        super("Post already exists");
         this.status = status;
     }
 }

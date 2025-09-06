@@ -1,10 +1,8 @@
 export class PostNotDeletedError extends Error {
     status: number;
-    message: string;
 
-    constructor(message: string, status: number) {
-        super();
-        this.message = message;
+    constructor(status: number) {
+        super("Post was not deleted");
         this.status = status;
     }
 }
