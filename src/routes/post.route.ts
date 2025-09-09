@@ -20,3 +20,5 @@ router.post('/:id', async (req: Request, res: Response, next: NextFunction) => {
 router.patch('/:id', async (req: Request, res: Response, next: NextFunction) => {
     return res.json(await updatePost(req, res, next));
 })
+
+export default router;

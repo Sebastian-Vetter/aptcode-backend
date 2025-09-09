@@ -3,11 +3,11 @@
 //imports
 import express from "express";
 import dotenv from "dotenv";
-import {connectDB} from "./database/mongo.database";
 import {createServer} from "http";
 import {Server as SocketIOServer} from "socket.io";
 import {errorMiddleware} from "./middlewares/error.middleware";
-
+import postRoute from "./routes/post.route";
+import {connectDB} from "./database/mongo.database";
 //init
 const app = express();
 const io = new SocketIOServer(createServer(app), {
@@ -19,6 +19,8 @@ const io = new SocketIOServer(createServer(app), {
 //dotenv
 dotenv.config();
 
+
+app.use("/posts", postRoute);
 //middlewares
 app.use(express.json());
 app.use(errorMiddleware);
