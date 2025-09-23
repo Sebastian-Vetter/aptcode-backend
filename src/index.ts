@@ -3,24 +3,26 @@
 //imports
 import express from "express";
 import dotenv from "dotenv";
-import {createServer} from "http";
-import {Server as SocketIOServer} from "socket.io";
+
 import {errorMiddleware} from "./middlewares/error.middleware";
 import postRoute from "./routes/post.route";
+import chatBotRoute from "./routes/chat.bot.route";
 import {connectDB} from "./database/mongo.database";
+import cors from "cors";
+
 //init
 const app = express();
-const io = new SocketIOServer(createServer(app), {
-    cors: {
-        origin: "*",
-    }
-});
 
 //dotenv
 dotenv.config();
 
+app.use(cors({
+    origin: "*",
+}));
 
 app.use("/posts", postRoute);
+app.use("/chatbot", chatBotRoute);
+
 //middlewares
 app.use(express.json());
 app.use(errorMiddleware);
